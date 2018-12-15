@@ -1,0 +1,15 @@
+<h1>Магазин</h1>
+<p>Наши книги</p>
+<% if notice %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+<% @products.each do |product| %>
+    <div class="entry">
+      <%= image_tag(product.image_url) %>
+      <h3><%= link_to product.title, product_path(product) %></h3>
+      <p><%= sanitize(product.description) %></p>
+      <div class="price_line">
+        <span class="price"><%= product.price.round(2) %></span>
+      </div>
+    </div>
+<% end %>
