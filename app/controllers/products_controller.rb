@@ -61,6 +61,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def upgrade
+    @products_for_img = Product.all
+    @products_for_img.each do |product|
+      product.image_url = rand(1..4).to_s + '.jpg'
+      product.save!
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
